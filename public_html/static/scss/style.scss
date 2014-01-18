@@ -1,0 +1,336 @@
+@mixin border-box {
+	box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	-o-box-sizing: border-box; 
+	-ms-box-sizing: border-box; 
+}
+
+body
+{
+	background-color: #EDEDED;
+	
+	.pure-menu.menu-bar
+	{
+		background-color: #4B71BE;
+		
+		.pure-menu-heading
+		{
+			color: #D3E2FF;
+		}
+		
+		li a
+		{
+			color: white;
+			
+			&:hover
+			{
+				background-color: #3C5FA8;
+			}
+		}
+	}
+	
+	.content
+	{
+		position: absolute;
+		top: 38px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+	
+		.vps-table
+		{
+			position: absolute;
+			right: 340px;
+			top: 0px;
+			bottom: 0px;
+			left: 0px;
+			overflow: auto;
+		}
+	
+		.filter
+		{
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			bottom: 0px;
+			width: 320px;
+			padding: 10px;
+			overflow: auto;
+			
+			background-color: #8DA6D8;
+			
+			.filter-section
+			{
+				background-color: #5F87DA;
+				margin-bottom: 10px;
+				padding: 8px 12px;
+				color: white;
+				font-size: 14px;
+				
+				.visibility-toggle
+				{
+					float: left;
+					margin: 3px 8px 0px 0px;
+				}
+				
+				h1
+				{
+					margin: 0px 0px 4px 0px;
+					font-size: 17px;
+					cursor: default;
+				}
+				
+				.button-group
+				{
+					margin-bottom: 8px;
+					
+					h2
+					{
+						margin: 0px 0px 2px 0px;
+						font-size: 15px;
+					}
+				}
+				
+				.button-item
+				{
+					padding: 6px 9px;
+					font-size: 12px;
+					background-color: #4E75C7;
+					color: #D1D1D1;
+					display: block;
+					width: 100%;
+					text-align: left;
+					border-radius: 0px;
+					
+					&:first-of-type
+					{
+						border-top-left-radius: 7px;
+						border-top-right-radius: 7px;
+					}
+					
+					&:last-of-type
+					{
+						border-bottom-left-radius: 7px;
+						border-bottom-right-radius: 7px;
+					}
+					
+					i.checked
+					{
+						color: lime;
+					}
+					
+					i.unchecked
+					{
+						color: #FF8489;
+					}
+					
+					&.pure-button-active
+					{
+						color: white;
+					}
+				}
+				
+				.search-list
+				{
+					position: relative;
+					
+					input.search
+					{
+						margin-bottom: 6px;
+						background: none;
+						color: #EBF0FA;
+						border: 1px solid #3F5582;
+						width: 100%;
+						font-weight: bold;
+						border-radius: 5px;
+						padding: 3px 5px;
+						padding-left: 24px; /* For icon hack */
+						@include border-box;
+						
+						&.list-attached
+						{
+							border-bottom-left-radius: 0px;
+							border-bottom-right-radius: 0px;
+							border-bottom: 1px solid transparent;
+						}
+					}
+					
+					.search-results
+					{
+						position: absolute;
+						left: 0px;
+						top: 0px;
+						padding: 7px 0px;
+						background-color: #7597DB;
+						border: 1px solid #314979;
+						border-top: none;
+						color: white;
+						@include border-box;
+						z-index: 999;
+						
+						h4
+						{
+							margin: 0px 0px 4px 0px;
+							padding: 0px 9px;
+							text-transform: uppercase;
+						}
+						
+						.item, .initial
+						{
+							padding: 4px 9px;
+							cursor: default;
+						}
+						
+						.item.selected
+						{
+							background-color: #537ACA;
+						}
+					}
+					
+					i.search-icon
+					{
+						/* Awful hack, but it gets us what we want. */
+						position: absolute;
+						top: 5px;
+						left: 6px;
+						font-size: 14px;
+						color: #323F59;
+					}
+					
+					a.type
+					{
+						padding: 6px 9px;
+						font-size: 12px;
+						background-color: #4E75C7;
+						color: white;
+						color: #D1D1D1;
+						text-align: left;
+						display: block;
+						float: left;
+						@include border-box;
+						border-radius: 0px;
+						
+						&.include
+						{
+							width: 40%;
+							border-top-left-radius: 7px;
+							
+							i
+							{
+								color: #04DD04;
+							}
+						}
+						
+						&.exclude
+						{
+							width: 60%;
+							border-top-right-radius: 7px;
+							
+							i
+							{
+								color: #FF8489;
+							}
+						}
+						
+						&.pure-button-active
+						{
+							color: white;
+						}
+						
+						i
+						{
+							margin-right: 4px;
+						}
+					}
+					
+					.list
+					{
+						border: 1px solid #4E75C7;
+						border-top: none;
+						clear: both;
+						
+						.item
+						{
+							padding: 6px 7px;
+							color: #EAEDF6;
+							background: #5f87da; /* Old browsers */
+							background: -moz-linear-gradient(top, #5f87da 0%, #5c84d1 100%); /* FF3.6+ */
+							background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5f87da), color-stop(100%,#5c84d1)); /* Chrome,Safari4+ */
+							background: -webkit-linear-gradient(top, #5f87da 0%,#5c84d1 100%); /* Chrome10+,Safari5.1+ */
+							background: -o-linear-gradient(top, #5f87da 0%,#5c84d1 100%); /* Opera 11.10+ */
+							background: -ms-linear-gradient(top, #5f87da 0%,#5c84d1 100%); /* IE10+ */
+							background: linear-gradient(to bottom, #5f87da 0%,#5c84d1 100%); /* W3C */
+							filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5f87da', endColorstr='#5c84d1',GradientType=0 ); /* IE6-9 */
+							
+							a.delete
+							{
+								float: right;
+								color: #D1D1D1;
+								font-size: 17px;
+								margin-top: -2px;
+								
+								&:hover
+								{
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				
+				.slider
+				{
+					position: relative;
+					
+					.bar
+					{
+						padding: 3px 0px;
+					}
+					
+					.outline
+					{
+						height: 8px;
+						border: 1px solid #4765A5;
+						border-radius: 3px;
+					}
+					
+					.fill
+					{
+						position: absolute;
+						background-color: #4E75C7;
+						height: 8px;
+					}
+					
+					.handle
+					{
+						position: absolute;
+						top: 0px;
+						width: 16px;
+						height: 16px;
+						background-color: #204186;
+						border-radius: 4px;
+					}
+					
+					.numeric
+					{
+						margin-top: 8px;
+						text-align: center;
+						
+						input
+						{
+							background: none;
+							color: #E0E5EE;
+							border: 1px solid #3D63B3;
+							width: 56px;
+							text-align: right;
+							font-weight: bold;
+							border-radius: 5px;
+							padding: 3px 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,5 @@
+<div class="filter-section">
+	<input type="checkbox" class="visibility-toggle" ng-model="visible" ng-checked="visible">
+	<h1 ng-click="visible = !visible">{{ title }}</h1>
+	<div class="section-contents" ng-transclude ng-show="visible"></div>
+</div>

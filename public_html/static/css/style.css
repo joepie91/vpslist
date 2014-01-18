@@ -1,0 +1,214 @@
+body {
+  background-color: #EDEDED; }
+  body .pure-menu.menu-bar {
+    background-color: #4B71BE; }
+    body .pure-menu.menu-bar .pure-menu-heading {
+      color: #D3E2FF; }
+    body .pure-menu.menu-bar li a {
+      color: white; }
+      body .pure-menu.menu-bar li a:hover {
+        background-color: #3C5FA8; }
+  body .content {
+    position: absolute;
+    top: 38px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px; }
+    body .content .vps-table {
+      position: absolute;
+      right: 340px;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      overflow: auto; }
+    body .content .filter {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
+      width: 320px;
+      padding: 10px;
+      overflow: auto;
+      background-color: #8DA6D8; }
+      body .content .filter .filter-section {
+        background-color: #5F87DA;
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        color: white;
+        font-size: 14px; }
+        body .content .filter .filter-section .visibility-toggle {
+          float: left;
+          margin: 3px 8px 0px 0px; }
+        body .content .filter .filter-section h1 {
+          margin: 0px 0px 4px 0px;
+          font-size: 17px;
+          cursor: default; }
+        body .content .filter .filter-section .button-group {
+          margin-bottom: 8px; }
+          body .content .filter .filter-section .button-group h2 {
+            margin: 0px 0px 2px 0px;
+            font-size: 15px; }
+        body .content .filter .filter-section .button-item {
+          padding: 6px 9px;
+          font-size: 12px;
+          background-color: #4E75C7;
+          color: #D1D1D1;
+          display: block;
+          width: 100%;
+          text-align: left;
+          border-radius: 0px; }
+          body .content .filter .filter-section .button-item:first-of-type {
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px; }
+          body .content .filter .filter-section .button-item:last-of-type {
+            border-bottom-left-radius: 7px;
+            border-bottom-right-radius: 7px; }
+          body .content .filter .filter-section .button-item i.checked {
+            color: lime; }
+          body .content .filter .filter-section .button-item i.unchecked {
+            color: #FF8489; }
+          body .content .filter .filter-section .button-item.pure-button-active {
+            color: white; }
+        body .content .filter .filter-section .search-list {
+          position: relative; }
+          body .content .filter .filter-section .search-list input.search {
+            margin-bottom: 6px;
+            background: none;
+            color: #EBF0FA;
+            border: 1px solid #3f5582;
+            width: 100%;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 3px 5px;
+            padding-left: 24px;
+            /* For icon hack */
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            -ms-box-sizing: border-box; }
+            body .content .filter .filter-section .search-list input.search.list-attached {
+              border-bottom-left-radius: 0px;
+              border-bottom-right-radius: 0px;
+              border-bottom: 1px solid transparent; }
+          body .content .filter .filter-section .search-list .search-results {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            padding: 7px 0px;
+            background-color: #7597DB;
+            border: 1px solid #314979;
+            border-top: none;
+            color: white;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            z-index: 999; }
+            body .content .filter .filter-section .search-list .search-results h4 {
+              margin: 0px 0px 4px 0px;
+              padding: 0px 9px;
+              text-transform: uppercase; }
+            body .content .filter .filter-section .search-list .search-results .item, body .content .filter .filter-section .search-list .search-results .initial {
+              padding: 4px 9px;
+              cursor: default; }
+            body .content .filter .filter-section .search-list .search-results .item.selected {
+              background-color: #537ACA; }
+          body .content .filter .filter-section .search-list i.search-icon {
+            /* Awful hack, but it gets us what we want. */
+            position: absolute;
+            top: 5px;
+            left: 6px;
+            font-size: 14px;
+            color: #323F59; }
+          body .content .filter .filter-section .search-list a.type {
+            padding: 6px 9px;
+            font-size: 12px;
+            background-color: #4E75C7;
+            color: white;
+            color: #D1D1D1;
+            text-align: left;
+            display: block;
+            float: left;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            border-radius: 0px; }
+            body .content .filter .filter-section .search-list a.type.include {
+              width: 40%;
+              border-top-left-radius: 7px; }
+              body .content .filter .filter-section .search-list a.type.include i {
+                color: #04DD04; }
+            body .content .filter .filter-section .search-list a.type.exclude {
+              width: 60%;
+              border-top-right-radius: 7px; }
+              body .content .filter .filter-section .search-list a.type.exclude i {
+                color: #FF8489; }
+            body .content .filter .filter-section .search-list a.type.pure-button-active {
+              color: white; }
+            body .content .filter .filter-section .search-list a.type i {
+              margin-right: 4px; }
+          body .content .filter .filter-section .search-list .list {
+            border: 1px solid #4e75c7;
+            border-top: none;
+            clear: both; }
+            body .content .filter .filter-section .search-list .list .item {
+              padding: 6px 7px;
+              color: #EAEDF6;
+              background: #5f87da;
+              /* Old browsers */
+              background: -moz-linear-gradient(top, #5f87da 0%, #5c84d1 100%);
+              /* FF3.6+ */
+              background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5f87da), color-stop(100%, #5c84d1));
+              /* Chrome,Safari4+ */
+              background: -webkit-linear-gradient(top, #5f87da 0%, #5c84d1 100%);
+              /* Chrome10+,Safari5.1+ */
+              background: -o-linear-gradient(top, #5f87da 0%, #5c84d1 100%);
+              /* Opera 11.10+ */
+              background: -ms-linear-gradient(top, #5f87da 0%, #5c84d1 100%);
+              /* IE10+ */
+              background: linear-gradient(to bottom, #5f87da 0%, #5c84d1 100%);
+              /* W3C */
+              filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5f87da', endColorstr='#5c84d1',GradientType=0 );
+              /* IE6-9 */ }
+              body .content .filter .filter-section .search-list .list .item a.delete {
+                float: right;
+                color: #D1D1D1;
+                font-size: 17px;
+                margin-top: -2px; }
+                body .content .filter .filter-section .search-list .list .item a.delete:hover {
+                  color: white; }
+        body .content .filter .filter-section .slider {
+          position: relative; }
+          body .content .filter .filter-section .slider .bar {
+            padding: 3px 0px; }
+          body .content .filter .filter-section .slider .outline {
+            height: 8px;
+            border: 1px solid #4765a5;
+            border-radius: 3px; }
+          body .content .filter .filter-section .slider .fill {
+            position: absolute;
+            background-color: #4E75C7;
+            height: 8px; }
+          body .content .filter .filter-section .slider .handle {
+            position: absolute;
+            top: 0px;
+            width: 16px;
+            height: 16px;
+            background-color: #204186;
+            border-radius: 4px; }
+          body .content .filter .filter-section .slider .numeric {
+            margin-top: 8px;
+            text-align: center; }
+            body .content .filter .filter-section .slider .numeric input {
+              background: none;
+              color: #E0E5EE;
+              border: 1px solid #3d63b3;
+              width: 56px;
+              text-align: right;
+              font-weight: bold;
+              border-radius: 5px;
+              padding: 3px 5px; }

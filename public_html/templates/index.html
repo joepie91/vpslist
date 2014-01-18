@@ -1,0 +1,177 @@
+<!doctype html>
+<html ng-app="vpslist">
+	<head>
+		<script src="/static/js/jquery-1.10.2.min.js"></script>
+		<script src="/static/js/angular.min.js"></script>
+		<script src="/static/js/underscore-min.js"></script>
+		<script src="/static/js/script.js"></script>
+		<link rel="stylesheet" href="/static/css/pure-min.css">
+		<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/css/style.css">
+	</head>
+	<body ng-controller="appController">
+		<div class="menu-bar pure-menu pure-menu-open pure-menu-horizontal">
+			<a href="#" class="pure-menu-heading">Cryto VPS Comparison Table</a>
+			<ul>
+				<li><a href="#">Overview</a></li>
+				<li><a href="#">Submit plans</a></li>
+				<li><a href="#">Donate</a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="vps-table">
+				<div>
+					<h3>Selected countries ({{ filters.location.country.type }})</h3>
+					<ul>
+						<li ng-repeat="item in filters.location.country.selected">
+							{{ item.key }}
+						</li>
+					</ul>
+				</div>
+				<div ng-repeat="(categorykey, category) in filters">					
+					<div ng-repeat="(itemkey, item) in category">
+						<div ng-show="itemkey == 'active'">
+							<h3 style="margin-bottom: 2px;">{{categorykey}}.{{itemkey}}: {{ item }}</h3>
+						</div>
+						<div ng-hide="itemkey == 'active'">
+							<h3 style="margin-bottom: 2px;">{{categorykey}}.{{itemkey}}</h3>
+							<div ng-repeat="(subkey, subitem) in item">
+								{{ subkey }}: {{ subitem }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="filter">
+				<filter-section title="Virtualization technology" ng-model="filters.platform.virtualization.active">
+					<button-group>
+						<button-item selected id="cb_ovzv" ng-model="filters.platform.virtualization.ovz_vswap">OpenVZ vSwap</button-item>
+						<button-item selected id="cb_ovzb" ng-model="filters.platform.virtualization.ovz_burst">OpenVZ burst</button-item>
+						<button-item selected id="cb_xenpv" ng-model="filters.platform.virtualization.xen_pv">Xen PV</button-item>
+						<button-item selected id="cb_xenhvm" ng-model="filters.platform.virtualization.xen_hvm">Xen HVM</button-item>
+						<button-item selected id="cb_kvm" ng-model="filters.platform.virtualization.kvm">KVM</button-item>
+						<button-item selected id="cb_lxc" ng-model="filters.platform.virtualization.lxc">LXC</button-item>
+						<button-item selected id="cb_vserver" ng-model="filters.platform.virtualization.vserver">vServer</button-item>
+						<button-item selected id="cb_hyperv" ng-model="filters.platform.virtualization.hyperv">Hyper-V</button-item>
+						<button-item selected id="cb_vmware" ng-model="filters.platform.virtualization.vmware">VMWare</button-item>
+						<button-item selected id="cb_virtuozzo" ng-model="filters.platform.virtualization.virtuozzo">Virtuozzo</button-item>
+						<button-item selected id="cb_fbsd" ng-model="filters.platform.virtualization.freebsd">FreeBSD jail</button-item>
+					</button-group>
+				</filter-section>
+				
+				<filter-section title="Control panel" ng-model="filters.platform.panel.active">
+					<button-group>
+						<button-item selected id="cb_solus" ng-model="filters.platform.panel.solusvm">SolusVM</button-item>
+						<button-item selected id="cb_onapp" ng-model="filters.platform.panel.onapp">OnApp</button-item>
+						<button-item selected id="cb_feathur" ng-model="filters.platform.panel.feathur">Feathur</button-item>
+						<button-item selected id="cb_virtualizor" ng-model="filters.platform.panel.virtualizor">Virtualizor</button-item>
+						<button-item selected id="cb_hostguard" ng-model="filters.platform.panel.hostguard">HostGuard</button-item>
+						<button-item selected id="cb_hypervm" ng-model="filters.platform.panel.hypervm">HyperVM</button-item>
+						<button-item selected id="cb_whmcs" ng-model="filters.platform.panel.whmcs">WHMCS (integrated)</button-item>
+						<button-item selected id="cb_otherpanel" ng-model="filters.platform.panel.other">Other</button-item>
+					</button-group>
+				</filter-section>
+				
+				<filter-section title="Country" visible ng-model="filters.location.country.active">
+					<search-list ng-model-type="filters.location.country.type" ng-model-items="filters.location.country.selected" source="sources.countries"></search-list>
+				</filter-section>
+				
+				<filter-section title="Datacenter" ng-model="filters.location.facility.active">
+					<search-list ng-model-type="filters.location.facility.type" ng-model-items="filters.location.facility.selected" source="sources.facilities"></search-list>
+				</filter-section>
+				
+				<filter-section title="Provider" ng-model="filters.company.provider.active">
+					<search-list ng-model-type="filters.company.provider.type" ng-model-items="filters.company.provider.selected" source="sources.providers"></search-list>
+				</filter-section>
+				
+				<filter-section title="Guaranteed RAM" visible ng-model="filters.memory.ram.active">
+					<slider min="0" max="8192" unit="MB" ng-model-low="filters.memory.ram.min" ng-model-high="filters.memory.ram.max"></slider>
+				</filter-section>
+				
+				<filter-section title="Swap (or added burst RAM)" ng-model="filters.memory.swap.active">
+					<slider min="0" max="8192" unit="MB" ng-model-low="filters.memory.swap.min" ng-model-high="filters.memory.swap.max"></slider>
+				</filter-section>
+				
+				<filter-section title="Disk space" ng-model="filters.disk.space.active">
+					<slider min="0" max="1500" unit="GB" ng-model-low="filters.disk.space.min" ng-model-high="filters.disk.space.max"></slider>
+				</filter-section>
+				
+				<filter-section title="Traffic" ng-model="filters.network.traffic.active">
+					<slider min="0" max="8000" unit="GB" ng-model-low="filters.network.traffic.min" ng-model-high="filters.network.traffic.max"></slider>
+				</filter-section>
+				
+				<filter-section title="Bandwidth" ng-model="filters.network.bandwidth.active">
+					<slider min="0" max="12400" unit="mbps" ng-model-low="filters.network.bandwidth.min" ng-model-high="filters.network.bandwidth.max"></slider>
+				</filter-section>
+				
+				<filter-section title="CPU cores" ng-model="filters.cpu.cores.active">
+					<slider min="0" max="8" unit="cores" ng-model-low="filters.cpu.cores.min" ng-model-high="filters.cpu.cores.max"></slider>
+				</filter-section>
+				
+				<filter-section title="CPU frequency/speed" ng-model="filters.cpu.speed.active">
+					<slider min="0" max="4000" unit="MHz" ng-model-low="filters.cpu.speed.min" ng-model-high="filters.cpu.speed.max"></slider>
+				</filter-section>
+				
+				<filter-section title="Included backup space" ng-model="filters.disk.backup.active">
+					<slider min="0" max="1500" unit="GB" ng-model-low="filters.disk.backup.min" ng-model-high="filters.disk.backup.max"></slider>
+				</filter-section>
+				
+				<filter-section title="Included CDN space" ng-model="filters.disk.backup.active">
+					<slider min="0" max="100" unit="GB" ng-model-low="filters.disk.cdn.min" ng-model-high="filters.disk.cdn.max"></slider>
+				</filter-section>
+				
+				<filter-section title="Storage types" ng-model="filters.disk.type.active">
+					<button-group>
+						<button-item selected id="cb_hdd" ng-model="filters.disk.type.hdd">HDD</button-item>
+						<button-item selected id="cb_ssdc" ng-model="filters.disk.type.ssdc">SSD-cached</button-item>
+						<button-item selected id="cb_ssd" ng-model="filters.disk.type.ssd">SSD</button-item>
+					</button-group>
+				</filter-section>
+				
+				<filter-section title="Exclude" ng-model="filters.exclude.type.active">
+					<checkbox selected id="cb_storage" ng-model="filters.exclude.type.storage">Exclude storage-only VPSes</checkbox>
+				</filter-section>
+				
+				<filter-section title="Must-haves" ng-model="filters.features.active">
+					<checkbox id="cb_dns" ng-model="filters.features.musthave.dns">Free DNS hosting</checkbox>
+					<checkbox id="cb_dcpu" ng-model="filters.features.musthave.dcpu">Dedicated CPU core(s)</checkbox>
+					<checkbox id="cb_dbw" ng-model="filters.features.musthave.dbw">Dedicated bandwidth</checkbox>
+					<checkbox id="cb_unmetered" ng-model="filters.features.musthave.unmetered">Unmetered traffic</checkbox>
+					<checkbox id="cb_ddos" ng-model="filters.features.musthave.ddos">DDoS mitigation</checkbox>
+				</filter-section>
+					
+				<filter-section title="Must allow" visible ng-model="filters.allow.active">
+					<button-group title="IRC">
+						<button-item id="cb_ircd" ng-model="filters.allow.irc.ircd">Daemons</button-item>
+						<button-item id="cb_ircb" ng-model="filters.allow.irc.ircb">Bots</button-item>
+						<button-item id="cb_ircc" ng-model="filters.allow.irc.ircc">Clients</button-item>
+					</button-group>
+				
+					<button-group title="Proxies">
+						<button-item id="cb_tor" ng-model="filters.allow.proxy.tor">TOR relays</button-item>
+						<button-item id="cb_torexit" ng-model="filters.allow.proxy.torexit">TOR exits</button-item>
+						<button-item id="cb_proxy" ng-model="filters.allow.proxy.public">Public proxies / VPNs</button-item>
+						<button-item id="cb_privateproxy" ng-model="filters.allow.proxy.private">Private proxies / VPNs</button-item>
+					</button-group>
+					
+					
+					<button-group title="Content">
+						<button-item id="cb_streaming" ng-model="filters.allow.content.streaming">Streaming media</button-item>
+						<button-item id="cb_porn" ng-model="filters.allow.content.porn">Pornography</button-item>
+						<button-item id="cb_hyip" ng-model="filters.allow.content.hyip">HYIP / MLM</button-item>
+						<button-item id="cb_copyright" ng-model="filters.allow.content.copyright">Unauthorized copyrighted content</button-item>
+					</button-group>
+						
+					<button-group title="Protocols and applications">
+						<button-item id="cb_bulkmail" ng-model="filters.allow.applications.bulkmail">Bulk (subscriber) e-mail</button-item>
+						<button-item id="cb_torrent" ng-model="filters.allow.applications.torrents">BitTorrent</button-item>
+						<button-item id="cb_games" ng-model="filters.allow.applications.games">Game servers</button-item>
+						<button-item id="cb_camfrog" ng-model="filters.allow.applications.camfrog">Camfrog</button-item>
+						<button-item id="cb_qemu" ng-model="filters.allow.applications.qemu">QEMU / VirtualBox</button-item>
+						<button-item id="cb_windows" ng-model="filters.allow.applications.windows">Windows</button-item>
+					</button-group>
+				</filter-section>
+			</div>
+		</div>
+	</body>
+</html>

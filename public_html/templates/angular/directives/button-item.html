@@ -1,0 +1,5 @@
+<button class="pure-button button-item" ng-click="selected = !selected" ng-class="{'pure-button-active': selected}">
+	<i class="fa fa-fw fa-check checked" ng-show="selected"></i>
+	<i class="fa fa-fw fa-times unchecked" ng-hide="selected"></i>
+	<span ng-transclude></span>
+</button>

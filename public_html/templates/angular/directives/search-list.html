@@ -1,0 +1,24 @@
+<div class="search-list">
+	<input type="text" class="search" ng-model="listQuery" ng-class="{'list-attached': listVisible == true}">
+	<div class="search-results" ng-show="listVisible">
+		<h4>Search results</h4>
+		<div class="initial" ng-show="listItems.length == 0">No results.</div>
+		<div class="item" ng-repeat="item in listItems" ng-class="{selected: listCurrent == $index }" ng-click="chooseItem(item);" ng-mouseover="selectItem(item);">{{ item.value }}</div>
+	</div>
+	<i class="search-icon fa fa-search"></i>
+	<div class="button-container">
+		<a href="#" class="pure-button include type" ng-click="ngModelType = 'include'" ng-class="{'pure-button-active': ngModelType == 'include'}">
+			<i class="fa fa-plus-circle"></i> Only these:
+		</a>
+		<a href="#" class="pure-button exclude type" ng-click="ngModelType = 'exclude'" ng-class="{'pure-button-active': ngModelType == 'exclude'}">
+			<i class="fa fa-minus-circle"></i> Everything except for:
+		</a>
+		<div class="list">
+			<div class="item" ng-repeat="item in ngModelItems" data-key="{{ item.key }}">
+				<a class="delete" ng-click="deleteItem(item);"><i class="fa fa-times"></i></a>
+				{{ item.value }}
+			</div>
+			<div class="item" ng-show="ngModelItems.length == 0">Enter a search term to start.</div>
+		</div>
+	</div>
+</div>
