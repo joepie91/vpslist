@@ -197,7 +197,9 @@ module.directive("searchList", function(){
 				if (scope.listQuery !== "")
 				{
 					scope.listItems = util.objectToArray(scope.source).filter(function(item){
-						return (item.key.toLowerCase().indexOf(scope.listQuery.toLowerCase()) !== -1 || item.value.toLowerCase().indexOf(scope.listQuery.toLowerCase()) !== -1);
+						var matches = (item.key.toLowerCase().indexOf(scope.listQuery.toLowerCase()) !== -1 || item.value.toLowerCase().indexOf(scope.listQuery.toLowerCase()) !== -1);
+						var selected = (scope.ngModelItems.filter(function(selected_item){ return item.key == selected_item.key; }).length > 0);
+						return matches && !selected;
 					}).sort(function(a, b){
 						index_a = a.value.indexOf(scope.listQuery);
 						
